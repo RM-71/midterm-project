@@ -1,20 +1,17 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext } from "react";
+import useLocalStorage from "./useLocalStorage";
 
+/**
+ * Auth context: simple boolean isLoggedIn persisted with useLocalStorage.
+ * - No navigation here (navigation must be done inside components).
+ */
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const initial = sessionStorage.getItem("isLoggedIn") === "true";
-  const [isLoggedIn, setIsLoggedIn] = useState(initial);
+  const [isLoggedIn, setIsLoggedIn] = useLocalStorage("isLoggedIn", false);
 
-  const login = () => {
-    sessionStorage.setItem("isLoggedIn", "true");
-    setIsLoggedIn(true);
-  };
-
-  const logout = () => {
-    sessionStorage.removeItem("isLoggedIn");
-    setIsLoggedIn(false);
-  };
+  const login = () => setIsLoggedIn(true);
+  const logout = () => setIsLoggedIn(false);
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, login, logout }}>

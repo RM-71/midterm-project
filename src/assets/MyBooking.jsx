@@ -9,7 +9,7 @@ export default function Bookings() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState(null);
 
-  const getSpace = (id) => spaces.find((s) => s.id === id);
+  const getSpace = (id) => spaces.find(s => s.id === id);
 
   const openModal = (booking) => {
     setSelectedBooking(booking);
@@ -18,7 +18,7 @@ export default function Bookings() {
 
   const cancelBooking = () => {
     if (!selectedBooking) return;
-    const updated = reservations.filter((r) => r.id !== selectedBooking.id);
+    const updated = reservations.filter(r => r.id !== selectedBooking.id);
     setReservations(updated);
     setModalOpen(false);
     setSelectedBooking(null);
@@ -50,9 +50,7 @@ export default function Bookings() {
                 <p className="text-gray-400">{space?.location}</p>
                 <p className="mt-2"><span className="font-semibold">Date:</span> {r.date}</p>
                 <p><span className="font-semibold">Time Slot:</span> {r.timeSlot}</p>
-                <button className="mt-4 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded" onClick={() => openModal(r)}>
-                  Cancel
-                </button>
+                <button className="mt-4 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded" onClick={() => openModal(r)}>Cancel</button>
               </div>
             );
           })}
@@ -65,12 +63,8 @@ export default function Bookings() {
             <h2 className="text-xl font-bold mb-4">Confirm Cancellation</h2>
             <p className="text-gray-300 mb-6">Are you sure you want to cancel this booking?</p>
             <div className="flex justify-between gap-4">
-              <button className="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded w-1/2" onClick={() => setModalOpen(false)}>
-                No
-              </button>
-              <button className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded w-1/2" onClick={cancelBooking}>
-                Yes, Cancel
-              </button>
+              <button className="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded w-1/2" onClick={() => setModalOpen(false)}>No</button>
+              <button className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded w-1/2" onClick={cancelBooking}>Yes, Cancel</button>
             </div>
           </div>
         </div>
