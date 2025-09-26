@@ -1,19 +1,28 @@
-import { createContext, useContext } from "react";
-import useLocalStorage from "./useLocalStorage";
+import React, { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useLocalStorage("user", null);
+  const initial = sessionStorage.getItem("isLoggedIn") === "true";
+  const [isLoggedIn, setIsLoggedIn] = useState(initial);
 
-  const login = (username = "student") => setUser({ id: "u1", name: username });
-  const logout = () => setUser(null);
+  const login = () => {
+    sessionStorage.setItem("isLoggedIn", "true");
+    setIsLoggedIn(true);
+  };
+
+  const logout = () => {
+    sessionStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+  };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 }
 
-export const useAuth = () => useContext(AuthContext);
+export function useAuth() {
+  return useContext(AuthContext);
+}

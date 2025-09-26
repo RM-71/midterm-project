@@ -1,15 +1,16 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useAuth } from "./sec&storage/AuthContext";
 import useLocalStorage from "./sec&storage/useLocalStorage";
 import spaces from "./Data/spaces.json";
+import { useAuth } from "./sec&storage/AuthContext";
 
 export default function SpotDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const space = spaces.find((s) => String(s.id) === id);
+  const space = spaces.find((s) => String(s.id) === String(id));
 
-  const { user } = useAuth();
+  const { isLoggedIn } = useAuth();
+
   const [date, setDate] = useState("");
   const [timeSlot, setTimeSlot] = useState("");
   const today = new Date().toISOString().split("T")[0];
@@ -20,10 +21,7 @@ export default function SpotDetails() {
     return (
       <div className="pt-20 p-6 text-white">
         <p>Space not found.</p>
-        <button
-          onClick={() => navigate("/home")}
-          className="mt-4 px-4 py-2 bg-blue-600 rounded"
-        >
+        <button onClick={() => navigate("/Home")} className="mt-4 px-4 py-2 bg-blue-600 rounded">
           Back to home
         </button>
       </div>
@@ -32,7 +30,8 @@ export default function SpotDetails() {
 
   const handleReserve = (e) => {
     e.preventDefault();
-    if (!user) {
+
+    if (!isLoggedIn) {
       alert("⚠️ Please log in to book a space.");
       return;
     }
@@ -41,28 +40,25 @@ export default function SpotDetails() {
       return;
     }
 
-    const alreadyBooked = reservations.some(
-      (r) =>
-        r.spaceId === space.id &&
-        r.date === date &&
-        r.timeSlot === timeSlot &&
-        r.userId === user.id
+    // prevent duplicate exact same booking (space + date + timeslot)
+    const already = reservations.some(
+      (r) => r.spaceId === space.id && r.date === date && r.timeSlot === timeSlot
     );
-
-    if (alreadyBooked) {
-      alert("⚠️ You already booked this space at that date and time.");
+    if (already) {
+      alert("⚠️ This space is already booked for that date/time.");
       return;
     }
 
     const newBooking = {
-      id: crypto.randomUUID(),
+      id: Date.now().toString() + Math.floor(Math.random() * 1000).toString(),
       spaceId: space.id,
       date,
       timeSlot,
-      userId: user.id,
+      createdAt: new Date().toISOString(),
     };
 
     setReservations([...reservations, newBooking]);
+
     alert(`✅ Reservation confirmed for ${space.name} on ${date} at ${timeSlot}`);
   };
 
@@ -82,10 +78,7 @@ export default function SpotDetails() {
         <ul className="flex flex-wrap gap-2 mb-4">
           {Array.isArray(space.amenities) &&
             space.amenities.map((amenity, idx) => (
-              <li
-                key={idx}
-                className="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-200"
-              >
+              <li key={idx} className="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-200">
                 {amenity}
               </li>
             ))}
@@ -95,17 +88,11 @@ export default function SpotDetails() {
           ₱{space.price} / day
         </p>
 
-        <form
-          onSubmit={handleReserve}
-          className="bg-gray-800 p-4 rounded-xl shadow-md"
-        >
+        <form onSubmit={handleReserve} className="bg-gray-800 p-4 rounded-xl shadow-md">
           <h2 className="text-lg font-bold mb-4">Book this space</h2>
 
           <div className="mb-4">
-            <label
-              htmlFor="check-in"
-              className="block text-sm font-medium text-gray-300 mb-1"
-            >
+            <label htmlFor="check-in" className="block text-sm font-medium text-gray-300 mb-1">
               Check-in Date
             </label>
             <input
@@ -114,34 +101,28 @@ export default function SpotDetails() {
               value={date}
               min={today}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full p-2 border border-gray-600 rounded bg-gray-900 text-white
-             [&::-webkit-calendar-picker-indicator]:invert
-             [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+              className="w-full p-2 border border-gray-600 rounded bg-gray-900 text-white [&::-webkit-calendar-picker-indicator]:invert [&::-webkit-calendar-picker-indicator]:cursor-pointer"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-300 mb-1">
-              Time Slot
-            </label>
+            <label className="block text-sm font-medium text-gray-300 mb-1">Time Slot</label>
             <select
               value={timeSlot}
               onChange={(e) => setTimeSlot(e.target.value)}
               className="w-full p-2 border border-gray-600 rounded bg-gray-900 text-white"
             >
               <option value="">-- Select a time slot --</option>
-              {space.time_slots.map((slot, idx) => (
-                <option key={idx} value={slot}>
-                  {slot}
-                </option>
-              ))}
+              {Array.isArray(space.time_slots) &&
+                space.time_slots.map((slot, idx) => (
+                  <option key={idx} value={slot}>
+                    {slot}
+                  </option>
+                ))}
             </select>
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg font-medium"
-          >
+          <button type="submit" className="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg font-medium">
             Reserve
           </button>
         </form>

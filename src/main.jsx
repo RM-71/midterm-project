@@ -19,16 +19,16 @@ createRoot(document.getElementById("root")).render(
         <Nav />
         <Routes>
           <Route path="/" element={<Log_in />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/book_spots/:id" element={<SpotDetails />} />
+          <Route path="/Home" element={<Home />} />
           <Route
-            path="/dashboard/my-bookings"
+            path="/Bookings"
             element={
               <ProtectedRoute>
                 <Bookings />
               </ProtectedRoute>
             }
           />
+          <Route path="/Book_Spots/:id" element={<SpotDetails />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
