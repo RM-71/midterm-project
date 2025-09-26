@@ -1,0 +1,203 @@
+[
+  {
+    "id": 1,
+    "name": "The Executive Centre",
+    "location": "Makati",
+    "price": 3500,
+    "main_image": "/Executive_Centre.jpg",
+    "images": ["Executive_Centre_1.jpg", "Executive_Centre_2.jpg"],
+    "description": "Sophisticated workspace with premium facilities including high-speed Wi-Fi, private phone booths, and business lounges.",
+    "amenities": [
+      "High-Speed Wi-Fi",
+      "Private Phone Booths",
+      "Business Lounge",
+      "24/7 Access",
+      "Event Spaces"
+    ],
+    "hours": "24/7",
+    "time_slots": ["7am - 11am", "11am - 3pm", "3pm - 7pm"]
+  },
+  {
+    "id": 2,
+    "name": "WeWork",
+    "location": "BGC",
+    "price": 2800,
+    "main_image": "/Wework.jpg",
+    "images": ["Wework1.jpg", "Wework2.jpg"],
+    "description": "Beautifully designed workspaces with private offices, high-speed internet, and community events.",
+    "amenities": [
+      "High-Speed Internet",
+      "Private Offices",
+      "Community Events",
+      "24/7 Access",
+      "Onsite Staff"
+    ],
+    "hours": "24/7",
+    "time_slots": ["8am - 12pm", "12pm - 4pm", "4pm - 8pm"]
+  },
+  {
+    "id": 3,
+    "name": "KMC Solutions",
+    "location": "Cebu City",
+    "price": 2500,
+    "main_image": "/KMC.jpg",
+    "images": ["KMC_Cebu_1.jpg", "KMC_Cebu_2.jpg"],
+    "description": "Enterprise-grade infrastructure with flexible workspace options including private offices and coworking spaces.",
+    "amenities": [
+      "High-Speed Internet",
+      "Private Offices",
+      "24/7 Access",
+      "Meeting Rooms",
+      "Event Spaces"
+    ],
+    "hours": "24/7",
+    "time_slots": ["7am - 11am", "11am - 3pm", "3pm - 7pm"]
+  },
+  {
+    "id": 4,
+    "name": "Rizal Library",
+    "location": "Quezon City",
+    "price": 500,
+    "main_image": "/Rizal_Library.jpg",
+    "images": [
+      "/assets/rizal_library_interior.jpg",
+      "/assets/rizal_library_facade.jpg",
+      "/assets/rizal_library_study_area.jpg"
+    ],
+    "description": "Academic library offering a quiet and conducive environment for studying and research. Features extensive collections, special collections, and modern study facilities.",
+    "amenities": [
+      "Quiet Study Areas",
+      "Graduate-Faculty Study Rooms",
+      "Extensive Print & Digital Collections",
+      "Special Collections on Filipino History & Culture",
+      "Multimedia Resource Center",
+      "Printing and Scanning Services",
+      "Wi-Fi Access"
+    ],
+    "hours": "Mon-Fri: 7:30am - 7:30pm; Sat: 8:00am - 5:00pm; Sun: Closed",
+    "time_slots": ["7:30am - 10am", "10am - 2pm", "2pm - 6pm"]
+  },
+  {
+    "id": 5,
+    "name": "Common Ground Rockwell",
+    "location": "Makati",
+    "price": 1500,
+    "main_image": "/CommonGround.jpg",
+    "images": ["Common_Ground_Rockwell_1.jpg", "Common_Ground_Rockwell_2.jpg"],
+    "description": "Premium coworking space with stylish interiors and professional work environment, ideal for study or work.",
+    "amenities": [
+      "Private Offices",
+      "Meeting Rooms",
+      "Open Workspaces",
+      "Wi-Fi",
+      "Lounge Area"
+    ],
+    "hours": "Mon-Fri: 8:00am - 8:00pm; Sat: 9:00am - 5:00pm; Sun: Closed",
+    "time_slots": ["8am - 12pm", "12pm - 4pm", "4pm - 8pm"]
+  },
+  {
+  "id": 14,
+  "name": "HomeRoom Study Lounge",
+  "location": "Quezon City",
+  "price": 1250,
+  "main_image": "/HomeRoom.jpg",
+  "images": ["Home Room_1.jpg","Home Room_2.jpg"],
+  "description": "Comfortable and modern study and coworking space featuring private booths, collaborative areas, and quiet zones designed for focus and productivity.",
+  "amenities": [
+    "Private Study Booths",
+    "Collaborative Zones",
+    "High-Speed Internet",
+    "Quiet Zones",
+    "24/7 Access",
+    "Printing & Scanning"
+  ],
+  "hours": "24/7",
+  "time_slots": ["6am - 12pm", "12pm - 6pm", "6pm - 10pm"]
+  },
+  {
+    "id": 7,
+    "name": "Regus Bonifacio Global City",
+    "location": "BGC",
+    "price": 1800,
+    "main_image": "/Regus.jpg",
+    "images": ["/assets/regus_bgc_1.jpg", "/assets/regus_bgc_2.jpg"],
+    "description": "High-class coworking space with flexible desks, private offices, and professional amenities.",
+    "amenities": [
+      "Private Offices",
+      "Hot Desks",
+      "Meeting Rooms",
+      "High-Speed Internet",
+      "Administrative Support",
+      "24/7 Access"
+    ],
+    "hours": "24/7",
+    "time_slots": ["6am - 10am", "10am - 2pm", "2pm - 6pm"]
+  },
+  {
+  "id": 8,
+  "name": "Kings City",
+  "location": "Parañaque City",
+  "price": 1100,
+  "main_image": "/King City.jpeg",
+  "images": [
+    "/assets/kings_city_1.jpg",
+    "/assets/kings_city_2.jpg"
+  ],
+  "description": "Modern coworking and study space with private rooms, open work areas, and quiet zones for focused work or study.",
+  "amenities": [
+    "Private Rooms",
+    "Open Work Areas",
+    "High-Speed Internet",
+    "Quiet Zones",
+    "24/7 Access",
+    "Printing & Scanning"
+  ],
+  "hours": "24/7",
+  "time_slots": ["6am - 12pm", "12pm - 6pm", "6pm - 10pm"]
+  },
+  {
+  "id": 9,
+  "name": "Cloudscape Study Hub",
+  "location": "Makati",
+  "price": 1300,
+  "main_image": "/cloud space1.jpg",
+  "images": [
+    "/assets/cloudscape_studyhub_1.jpg",
+    "/assets/cloudscape_studyhub_2.jpg"
+  ],
+  "description": "Premium study space with panoramic city views, quiet zones, private booths, and collaborative areas for group work.",
+  "amenities": [
+    "Private Study Booths",
+    "Collaborative Zones",
+    "High-Speed Internet",
+    "Panoramic Views",
+    "24/7 Access",
+    "Printing & Scanning"
+  ],
+  "hours": "24/7",
+  "time_slots": ["6am - 12pm", "12pm - 6pm", "6pm - 10pm"]
+  },
+  {
+  "id": 10,
+  "name": "Mind Zone España",
+  "location": "España, Manila",
+  "price": 1200,
+  "main_image": "/Mind_Zone.jpg",
+  "images": [
+    "/assets/mindzone_espana_1.jpg",
+    "/assets/mindzone_espana_2.jpg"
+  ],
+  "description": "Modern study and coworking space with private pods, quiet zones, and group work areas, designed for maximum focus and productivity.",
+  "amenities": [
+    "Private Study Pods",
+    "Group Work Rooms",
+    "High-Speed Internet",
+    "Quiet Zones",
+    "24/7 Access",
+    "Printing & Scanning"
+  ],
+  "hours": "24/7",
+  "time_slots": ["6am - 12pm", "12pm - 6pm", "6pm - 10pm"]
+  }
+
+]

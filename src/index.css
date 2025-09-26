@@ -1,0 +1,20 @@
+/* This file should be processed by Tailwind CSS CLI or PostCSS with Tailwind plugin */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* src/styles/custom-scroll.css */
+.scrollbar-custom {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;                
+  scrollbar-color: #546461 transparent;
+
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #546461;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
