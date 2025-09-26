@@ -6,7 +6,7 @@ export default function Log_in() {
   const { isLoggedIn, login } = useAuth();
   const navigate = useNavigate();
 
-  // redirect to Home if already logged in (useEffect avoids navigate-in-render warning)
+
   useEffect(() => {
     if (isLoggedIn) navigate("/Home", { replace: true });
   }, [isLoggedIn, navigate]);
