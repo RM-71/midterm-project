@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
 
-/**
- * Simple useLocalStorage hook (key, initialValue)
- * - reads once lazily from localStorage
- * - writes whenever state changes
- */
 export default function useLocalStorage(key, initialValue) {
   const [state, setState] = useState(() => {
     try {
